@@ -1,0 +1,45 @@
+﻿/*********************************************************************
+Purpose/Description: An algorithm to find kth element from the end 
+of a linked list.
+Author’s Panther ID: 5159067
+Certification:
+I hereby certify that this work is my own and none of it is the work of
+any other person.
+********************************************************************/
+
+- Algorithm to find the kth element from the end of a linked list:
+
+	1) Make 2 pointers to the head (first element) of the linked list, name them ptr1 and ptr2
+	2) Move ptr2 to the (k-1)th node in the linked list.
+	3) Ptr2 is now (k-1) nodes away from ptr1 to get the kth element from the end of the list we move ptr1 and ptr2 until ptr2 reaches the end of the list. 
+	4) Now ptr2 is at the end of the list, and ptr1  will be at the kth node from the end of the list. 
+	5) Return the data that ptr1 is pointing to.
+
+- Psuedo Code: 
+	
+	// Get pointer to first node in LinkedList, first element in linked list
+	Node ptr1 = first;
+	Node ptr2 = first;
+	
+	// Iterate ptr2 until we reach the kth-1 element 
+	for(int i=0; i<(k-1);++i){
+		// In case our List has less than k elements, check that ptr2 is not equal to null
+		if(ptr2 == null)
+		    return null;
+		// Move to next node
+		ptr2 = ptr2.next;
+	}
+
+	// Iterate both ptr2 and ptr1 until ptr2 reaches the end of the list
+	while(ptr2 != null){
+	ptr2 = ptr2.next;
+	ptr1 = ptr1.next;
+	}
+
+	// ptr2 is now at the end of the list and ptr1 is pointing to the kth element from the end of the list
+	return ptr1.data;
+
+
+- Running time
+
+	The running time for this algorithm is O(n), because in the worst case the element our pointers would have to move through all the elements in the linked list. 
